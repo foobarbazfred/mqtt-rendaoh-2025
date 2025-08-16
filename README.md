@@ -29,3 +29,5 @@ Category 1: Buttons, beeps, and blinkenlights
    - Victory moments are now celebrated with synchronized sound effects and dynamic color LED displays, delivering a more immersive and satisfying experience.
 - MicroPython Compatibility
   -  Previously dependent on Python 3, the controller has been refactored to run smoothly on microcontrollers using MicroPython, significantly expanding its portability and hardware flexibility.
+-  Display Feature Added to Controller
+  -  The controller now utilizes the ATOMS3’s built-in LCD to display the current game state, allowing players to easily monitor progress and stay engaged throughout gameplay.
