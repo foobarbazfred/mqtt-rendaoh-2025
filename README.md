@@ -1,4 +1,4 @@
-# MQTT Rendaoh 2025: Real-Time Button Mash Battle with IoT
+# MQTT Renda-Oh 2025: Real-Time Button Mash Battle with IoT
 
 This project was created for GitHub's "For the Love of Code 2025" hackathon.  
 It is a revamped version of the original MQTT-based button mash game, designed to be more fun, educational, and technically refined.
