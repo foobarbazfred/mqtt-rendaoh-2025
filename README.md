@@ -21,3 +21,8 @@ The project is designed to help beginners learn about hardware/software integrat
 
 ## Hackathon Category
 Category 1: Buttons, beeps, and blinkenlights
+
+## What's New
+- Improved victory melody logic for smoother transitions
+- Refactored sound trigger timing to reduce latency
+- Added fallback audio for edge cases
