@@ -1,7 +1,11 @@
 #
 #  file: pio_switch_counter.py
 #
-#  counter by PIO w/ chattering filter
+# Counts button presses using PIO (Programmable I/O).
+# Implements a simple debounce filter to eliminate mechanical chattering.
+# All logic is handled within the PIO state machine for efficient edge detection.
+#
+#
 #  v0.01  1st version 
 #  v0.02  refactor (not jmp but wait)
 #  v0.03  bug fix (convert number; minus -> plus is fixed)
