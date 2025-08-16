@@ -127,24 +127,6 @@ def init(in_pin):
     sm.active(1) 
     return sm
 
+# reference
 # https://docs.micropython.org/en/latest/library/rp2.StateMachine.html
-#
 # https://micropython-docs-ja.readthedocs.io/ja/latest/library/rp2.html#rp2.asm_pio
-#
-# https://micropython-docs-ja.readthedocs.io/ja/latest/library/rp2.html#rp2.asm_pio
-#
-
-
-
-#  def intr(pio):
-#      global PIO_irq_flag
-#      #print("InterruptHandler")
-#      flags = pio.irq().flags()    #
-#      #print("{:04x}: ".format(flags),end="")
-#      if flags & rp2.PIO.IRQ_SM0:   #
-#          #print("catch irq(0)")
-#          PIO_irq_flag = True
-#      else:
-#          pass
-#          #print("not irq(0)")
-#  
