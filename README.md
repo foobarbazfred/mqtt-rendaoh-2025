@@ -3,6 +3,9 @@
 **MQTT Renda-Oh 2025** is a real-time button mash battle game designed to help you learn IoT and embedded systems in a fun and interactive way.  
 This project was created for GitHub's "For the Love of Code 2025" hackathon and is an advanced, educational revamp of the original MQTT-based button-mash game.
 
+<img src="assets/images/rendaoh_kanji.png" width="500">
+
+
 ## Project Overview
 
 Players compete by pressing physical buttons connected to an AtomS3 (ESP32-S3) microcontroller running MicroPython.  
