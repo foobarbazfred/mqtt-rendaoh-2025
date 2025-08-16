@@ -23,6 +23,9 @@ The project is designed to help beginners learn about hardware/software integrat
 Category 1: Buttons, beeps, and blinkenlights
 
 ## What's New
-- Improved victory melody logic for smoother transitions
-- Refactored sound trigger timing to reduce latency
-- Added fallback audio for edge cases
+- Interactive MQTT Messaging
+   - The controller now publishes MQTT messages in direct response to player clicks, creating a seamless and intuitive interaction between user input and system feedback.
+- Enhanced Victory Effects
+   - Victory moments are now celebrated with synchronized sound effects and dynamic color LED displays, delivering a more immersive and satisfying experience.
+- MicroPython Compatibility
+  -  Previously dependent on Python 3, the controller has been refactored to run smoothly on microcontrollers using MicroPython, significantly expanding its portability and hardware flexibility.
