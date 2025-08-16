@@ -14,8 +14,8 @@ The project is specifically designed to teach beginners about **hardware/softwar
 
 ## Technical Architecture
 
-- **AtomS3 (ESP32-S3):**  
-  A high-performance microcontroller with Wi-Fi/Bluetooth, ideal for MicroPython scripting, GPIO handling, and SPI communication.
+- **AtomS3 (ESP32-S3):**  for GameController  
+  A high-performance microcontroller with Wi-Fi/Bluetooth, ideal for MicroPython scripting, GPIO handling
 - **MicroPython:**  
   A lightweight Python implementation optimized for embedded devices, enabling easy scripting directly on microcontrollers.
 - **GC9107 LCD (SPI):**  
@@ -23,7 +23,7 @@ The project is specifically designed to teach beginners about **hardware/softwar
 - **MQTT (Pub/Sub Model):**  
   An efficient, lightweight messaging protocol for IoT. Each device publishes its score updates; the broker aggregates and distributes game state in real time.
 - **PIO (Programmable IO):**  
-  Used for optimizing SPI operations and boosting overall performance for display and communication.
+  Used for optimizing SPI operations and boosting overall performance for unti chattering and click count.
 
 ## Game Flow
 
