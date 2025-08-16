@@ -7,7 +7,7 @@
 #  v0.04 (2025/8/16)
 #    refine comment
 #    add ui for controller (M5STACK ATOMS3)
-
+#    if ESP32S3 then change clock to 240MHz
 #
 #
 from controller  import GameController
@@ -26,10 +26,14 @@ def main():
     ui = None
     # if contoller is M5ATOMS3, then setup UI
     if IS_M5ATOMS3:
-       from controller_ui import ControllerUI
-       ui = ControllerUI()
-       ui.lcd_clear()
-       ui.lcd_draw_text(0,0,'MQTT GAME Renda')
+        import os
+        if 'M5Stack AtomS3' in os.uname().machine:
+           from controller_ui import ControllerUI
+           ui = ControllerUI()
+           ui.lcd_clear()
+           ui.lcd_draw_text(0,0,'MQTT GAME Renda')
+           import machine
+           machine.freq(240_000_000)
     
     # initialise GameAgent Class
     game_agent = GameAgent('controller')
