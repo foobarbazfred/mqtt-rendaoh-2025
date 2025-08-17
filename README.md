@@ -14,8 +14,10 @@ The project is specifically designed to teach beginners about **hardware/softwar
 
 ## Technical Architecture
 
+- **Raspberry Pi Pico 2 W (RP2350):**  for GamePalyer  
+  A high cost-performance microcontroller with Wi-Fi/Bluetooth, also has PIO interface
 - **AtomS3 (ESP32-S3):**  for GameController  
-  A high-performance microcontroller with Wi-Fi/Bluetooth, ideal for MicroPython scripting, GPIO handling
+  A high-performance microcontroller with Wi-Fi/Bluetooth, ideal for MicroPython scripting
 - **MicroPython:**  
   A lightweight Python implementation optimized for embedded devices, enabling easy scripting directly on microcontrollers.
 - **GC9107 LCD (SPI):**  
@@ -23,7 +25,7 @@ The project is specifically designed to teach beginners about **hardware/softwar
 - **MQTT (Pub/Sub Model):**  
   An efficient, lightweight messaging protocol for IoT. Each device publishes its score updates; the broker aggregates and distributes game state in real time.
 - **PIO (Programmable IO):**  
-  Used for optimizing SPI operations and boosting overall performance for unti chattering and click count.
+  Used for optimizing XXX operations and boosting overall performance for unti chattering and click count.
 - **MQTT Broker:**  
   For optimal performance, this system requires an MQTT broker with minimal latency and permissive quota policies.
   As a result, deploying an MQTT broker on the local network or using AWS IoT Core’s MQTT broker is required
