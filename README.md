@@ -24,6 +24,9 @@ The project is specifically designed to teach beginners about **hardware/softwar
   An efficient, lightweight messaging protocol for IoT. Each device publishes its score updates; the broker aggregates and distributes game state in real time.
 - **PIO (Programmable IO):**  
   Used for optimizing SPI operations and boosting overall performance for unti chattering and click count.
+- **MQTT Broker:**  
+  For optimal performance, this system requires an MQTT broker with minimal latency and permissive quota policies.
+  As a result, deploying an MQTT broker on the local network or using AWS IoT Core’s MQTT broker is required
 
 ## Game Flow
 
