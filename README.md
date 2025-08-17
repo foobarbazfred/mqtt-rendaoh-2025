@@ -8,9 +8,9 @@ This project was created for GitHub's "For the Love of Code 2025" hackathon and 
 
 ## Project Overview
 
-Players compete by pressing physical buttons connected to an AtomS3 (ESP32-S3) microcontroller running MicroPython.  
-Each button press sends a score update via MQTT, and game state—including scores and victory effects—is displayed on a GC9107 LCD (SPI interface).  
-The project is specifically designed to teach beginners about **hardware/software integration, SPI communication, and MQTT messaging** through hands-on gameplay.
+Players compete by pressing physical buttons connected to an Raspberry Pi Pico 2 W running MicroPython.  
+Each button press sends a score update via MQTT, and game state—including scores and victory effects—is displayed on a Color LED (NeoPixel).  
+The project is specifically designed to teach beginners about **hardware/software integration, button click counting by PIO, and MQTT messaging** through hands-on gameplay.
 
 ## Technical Architecture
 
