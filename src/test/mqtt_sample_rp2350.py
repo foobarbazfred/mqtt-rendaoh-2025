@@ -1,47 +1,61 @@
+################################################ try
 #
-# sample for RP2350
+#   RP2350 sample for AWS IoT  Core
 #
 
-import network
-import ussl
-import socket
+
+import time
+import ssl
+import json
 from umqtt.simple import MQTTClient
 
-# TLS       
-addr_info = socket.getaddrinfo(host, port)[0][-1]
-sock = socket.socket()
-sock.connect(addr_info)
 
-with open("ca.pem", "rb") as f:
-     ca_cert = f.read()
-with open("client.pem", "rb") as f:
-     client_cert = f.read()
-with open("client.key", "rb") as f:
-     client_key = f.read()
+MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
-ssl_sock = ussl.wrap_socket(sock,
-                            server_hostname=host,
-                            key=client_key,
-                            cert=client_cert,
-                            ca_certs=ca_cert,
-                            cert_reqs=ussl.CERT_REQUIRED)
+MQTT_TOPIC = b'test/upy_publish_test'
+MQTT_CLIENT_ID = "client_RP_Pico2W_0001"
 
-# MQTT connect
-client = MQTTClient(
-    client_id = "rp2350-client",
-    server = MQTT_BROKER,
-    port = 8883,
-    ssl_params = {"server_hostname": "mqtt.example.com"},
-    sock_factory = ssl_sock,
-    ssl = True,
-)
+CLIENT_KEY_FILE = '/cert/private.der.key'
+CLIENT_CRT_FILE = 'cert/client.der.crt'
+SERVER_CRT_FILE = 'cert/AmazonRootCA1.der.pem'
 
-# 通信開始
+# read Server side ROOT CA (DER format)
+with open(SERVER_CRT_FILE, "rb") as f:
+     cadata = f.read()
+
+# parameters for mTLS
+ssl_params = {
+    "key" : CLIENT_KEY_FILE,
+    "cert" : CLIENT_CRT_FILE,
+    'cadata' : cadata,
+    "cert_reqs" : ssl.CERT_REQUIRED,
+    'server_hostname' : MQTT_BROKER,
+}
+client = MQTTClient( MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, ssl = True, ssl_params = ssl_params )
 client.connect()
-print("MQTT connected with mTLS")
 
-# メッセージ送信
-client.publish(b"iot/test", b"Hello from RP2350 with mTLS")
+def on_message(topic, msg):
+    print('------------------')
+    print("Received: ", topic , '   ' , msg)
 
-# 終了処理
+client.set_callback(on_message)
+
+TOPIC_ROOT = 'game-renda-0123'
+TOPIC_COMMAND_CHANGE_STATE = f'{TOPIC_ROOT}/command/change-state'
+client.subscribe(TOPIC_COMMAND_CHANGE_STATE, qos=1)  
+
+while True:
+   client.check_msg()
+   print('z..')
+   time.sleep(0.1)
+
 client.disconnect()
+
+
+
+
+#message = {'client_id': MQTT_CLIENT_ID, 'security settings' : 'with TLS and auth by client crt' }
+#payload = json.dumps(message).encode('utf-8')
+#print("publish:", payload)
+#client.publish(MQTT_TOPIC, payload)
