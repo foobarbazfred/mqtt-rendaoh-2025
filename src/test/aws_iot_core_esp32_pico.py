@@ -86,44 +86,6 @@ mqtt.check_msg()
 
 
 
-########################## in fail
-
-private_key = "cert/private.key"
-client_cert = "cert/client.crt"
-server_cert = "cert/server.crt"
-
-
-from umqtt.simple import MQTTClient
-import ssl
-
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
-PORT=8883
-
-with open(private_key, 'r') as f:
-    key = f.read()
-with open(client_cert, 'r') as f:
-    cert = f.read()
-
-with open(server_cert, 'r') as f:
-    server_cert = f.read()
-
-ssl_params = {"key":key, "cert":cert, "cadata" : server_cert, 
-              "server_side":False,
-              "cert_reqs" : ssl.CERT_REQUIRED, 
-              'server_hostname' : MQTT_BROKER,
-}
-
-
-CLIENT_ID = "ESP32Pico_001"
-
-
-
-mqtt = MQTTClient(client_id=CLIENT_ID, server=MQTT_BROKER, port=8883, keepalive=1200, ssl=True, ssl_params=ssl_params)
-mqtt.connect()
-client.publish(topic, message)
-mqtt.check_msg()
-
-
 
 ########################## in fail -> OK
 # Traceback (most recent call last):
@@ -171,66 +133,6 @@ https://github.com/aws-samples/aws-iot-core-getting-started-micropython/blob/mai
 
 
 
-########################################################## in fail (ROOT CA MISMATCH)
-# 
-# >>> client.connect()
-# Traceback (most recent call last):
-#   File "<stdin>", line 1, in <module>
-#   File "umqtt/simple.py", line 74, in connect
-#   File "ssl.py", line 1, in wrap_socket
-#   File "ssl.py", line 1, in wrap_socket
-# ValueError:
-# The certificate is not correctly signed by the trusted CA
-# 
-
-from umqtt.simple import MQTTClient
-import ssl
-import json
-
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
-MQTT_PORT = 8883             # 8883 : MQTT, encrypted
-
-MQTT_TOPIC = b'test/upy_publish_test'
-MQTT_CLIENT_ID = "client_ESP32_PICO_001"
-
-CLIENT_KEY_FILE = '/cert/private.key'
-CLIENT_CRT_FILE = '/cert/client.crt'
-SERVER_CRT_FILE = '/cert/server.crt'
-
-# read Server side ROOT CA (PEM format)
-with open(SERVER_CRT_FILE, "r") as f:
-     cadata = f.read()
-
-# parameters for mTLS
-ssl_params = {
-    "key" : CLIENT_KEY_FILE,
-    "cert" : CLIENT_CRT_FILE,
-    'cadata' : cadata,
-    "cert_reqs" : ssl.CERT_REQUIRED,
-    'server_hostname' : MQTT_BROKER,
-}
-client = MQTTClient( MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, ssl = True, ssl_params = ssl_params )
-client.connect()
-message = {'client_id': MQTT_CLIENT_ID, 'security settings' : 'with TLS and auth by client crt' }
-payload = json.dumps(message).encode('utf-8')
-print("publish:", payload)
-client.publish(MQTT_TOPIC, payload)
-client.disconnect()
-
-
-
-
-
-
-IoTServer ̏ؖ    F
- [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [
-CN = Amazon RSA 2048 M01
-O = Amazon
-C = US
- [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [ [
-
-
-
 
 ########################################################## try ng -> OK
 # 
@@ -266,61 +168,6 @@ with open(SERVER_CRT_FILE, "r") as f:
 ssl_params = {
     "key" : CLIENT_KEY_FILE,
     "cert" : CLIENT_CRT_FILE,
-    'cadata' : cadata,
-    "cert_reqs" : ssl.CERT_REQUIRED,
-    'server_hostname' : MQTT_BROKER,
-}
-client = MQTTClient( MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, ssl = True, ssl_params = ssl_params )
-client.connect()
-message = {'client_id': MQTT_CLIENT_ID, 'security settings' : 'with TLS and auth by client crt' }
-payload = json.dumps(message).encode('utf-8')
-print("publish:", payload)
-client.publish(MQTT_TOPIC, payload)
-client.disconnect()
-
-
-################################################ try -> NG
-#
-#
-#Traceback (most recent call last):
-#  File "<stdin>", line 37, in <module>
-#  File "umqtt/simple.py", line 74, in connect
-#  File "ssl.py", line 1, in wrap_socket
-#  File "ssl.py", line 1, in load_cert_chain
-#OSError: [Errno 2] ENOENT
-#
-
-from umqtt.simple import MQTTClient
-import ssl
-import json
-
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
-MQTT_PORT = 8883             # 8883 : MQTT, encrypted
-
-MQTT_TOPIC = b'test/upy_publish_test'
-MQTT_CLIENT_ID = "client_ESP32_PICO_001"
-
-CLIENT_KEY_FILE = '/cert/private.key'
-CLIENT_CRT_FILE = '/cert/client.crt'
-SERVER_CRT_FILE = 'cert/AmazonRootCA1.pem'
-
-#The certificate is not correctly signed by the trusted CA
-#SERVER_CRT_FILE = 'cert/AmazonRootCA3.pem'  
-
-
-with open(CLIENT_KEY_FILE, 'r') as f:
-    key = f.read()
-with open(CLIENT_CRT_FILE, 'r') as f:
-    cert = f.read()
-
-# read Server side ROOT CA (PEM format)
-with open(SERVER_CRT_FILE, "r") as f:
-     cadata = f.read()
-
-# parameters for mTLS
-ssl_params = {
-    "key" : key,
-    "cert" : cert,
     'cadata' : cadata,
     "cert_reqs" : ssl.CERT_REQUIRED,
     'server_hostname' : MQTT_BROKER,
@@ -571,49 +418,6 @@ client.disconnect()
 
 
 
-############################################ try -> fail
-#
-#
-#Traceback (most recent call last):
-#  File "<stdin>", line 24, in <module>
-#  File "umqtt/simple.py", line 74, in connect
-#  File "ssl.py", line 1, in wrap_socket
-#  File "ssl.py", line 1, in load_verify_locations
-#ValueError: invalid cert
-#
-
-from umqtt.simple import MQTTClient
-import ssl
-import json
-
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
-MQTT_PORT = 8883             # 8883 : MQTT, encrypted
-
-MQTT_TOPIC = b'test/upy_publish_test'
-MQTT_CLIENT_ID = "client_ESP32_PICO_001"
-
-CLIENT_KEY_FILE = '/cert/private.der.key'
-CLIENT_CRT_FILE = '/cert/client.der.crt'
-SERVER_CRT_FILE = 'cert/AmazonRootCA1.der'
-
-# parameters for mTLS
-ssl_params = {
-    "key" : CLIENT_KEY_FILE,
-    "cert" : CLIENT_CRT_FILE,
-    'cadata' : SERVER_CRT_FILE,
-    "cert_reqs" : ssl.CERT_REQUIRED,
-    'server_hostname' : MQTT_BROKER,
-}
-client = MQTTClient( MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, ssl = True, ssl_params = ssl_params )
-client.connect()
-message = {'client_id': MQTT_CLIENT_ID, 'security settings' : 'with TLS and auth by client crt' }
-payload = json.dumps(message).encode('utf-8')
-print("publish:", payload)
-client.publish(MQTT_TOPIC, payload)
-client.disconnect()
-
-
-
 
 
 ############################################ try(pem pk??) -> PEM OK
@@ -720,39 +524,3 @@ client.connect(clean_session=True)
 client.publish('aa/bb/cc', json.dumps({'params':'use pem format'}))
 time.sleep(1)
 client.disconnect()
-
-
-###################################  try -> Error
-#
-# try
-
-# Traceback (most recent call last):
-#   File "<stdin>", line 1, in <mdule>
-# ValueError: invalid key
-# >>> context.load_verify_locations(ROOT_CA_FILE)
-# Traceback (most recent call last):
-#   File "<stdin>", line 1, in <module>
-# ValueError: invalid cert
-
-
-import tls
-import json
-from umqtt.simple import MQTTClient
-
-KEY_FILE = '/cert/private.key'
-CERT_FILE ='/cert/client.crt'
-ROOT_CA_FILE ='/cert/AmazonRootCA1.pem'
-
-client_id = "esp32-pico01"
-endpoint = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
-
-context = tls.SSLContext(tls.PROTOCOL_TLS_CLIENT)
-context.load_cert_chain(CERT_FILE, KEY_FILE)
-context.load_verify_locations(ROOT_CA_FILE)
-client = MQTTClient(client_id, endpoint, port=8883, keepalive=3600, ssl=context)
-client.connect(clean_session=True)
-client.publish('aa/bb/cc', json.dumps({'aa':'bb'}))
-time.sleep(1)
-client.disconnect()
-
-
