@@ -52,8 +52,7 @@ from mylib import timestamp
 MQTT_BROKER = '192.168.10.125'   # local mqtt broker mosquitto
 MQTT_PORT = 1883
 
-
-GAME_DURATIN = 10   # Constant defining the duration of a click match
+GAME_DURATION = 10   # Constant defining the duration of a click match
 INIT_STATE = 'STATE_OPEN'
 PERIODIC_INTERVAL = 500  # Constant defining interval (msec) for periodoc send message
 
@@ -134,7 +133,7 @@ class GameAgent:
                'topic' : TOPIC_COMMAND_CHANGE_STATE,
                'payload' : {'state' : 'STATE_START'},
                'player_action' : None,
-               'duration' : GAME_DURATIN  - 3,    # -3 means countdown
+               'duration' : GAME_DURATION  - 3,    # -3 means countdown
                'next_state' : 'STATE_COUNTDOWN_TO_STOP_3',
             },
         
