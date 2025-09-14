@@ -9,6 +9,11 @@
 #    add ui for controller (M5STACK ATOMS3)
 #    if ESP32S3 then change clock to 240MHz
 #
+#  v0.05 (2025/9/14)
+#     Added support for dual MQTT brokers: local Mosquitto + AWS IoT Core
+#     Connection settings managed via MqttServerConfig dictionary
+#
+#
 #
 from controller  import GameController
 from game_agent import GameAgent
@@ -19,6 +24,27 @@ from mylib import get_uniq_id
 # https://docs.m5stack.com/ja/core/AtomS3
 IS_M5ATOMS3 = True
 
+
+# broker config for local server
+BROKER_CONFIG_LOCAL = {
+    'broker_endpoint' : '192.168.10.100',
+    'broker_port' : 1883,
+    'use_TLS': False,
+    'TLS_config' : {}
+}
+
+
+# broker config for cloud mqtt server (AWS IoT Core)
+BROKER_CONFIG_AWS_IOT_CORE = {
+    'broker_endpoint' : 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com',
+    'broker_port' : 8883,
+    'use_TLS': True,
+    'TLS_config' : {
+        'client_key_file' : '/cert/private.der.key',
+        'client_crt_file' : '/cert/client.der.crt',
+        'root_ca_file' : '/cert/AmazonRootCA1.der.pem',
+    }
+}
 
 
 def main():
@@ -36,7 +62,8 @@ def main():
            machine.freq(240_000_000)
     
     # initialise GameAgent Class
-    game_agent = GameAgent('controller')
+    broker_config = BROKER_CONFIG_AWS_IOT_CORE
+    game_agent = GameAgent('controller', broker_config)
 
     # initialise GameController Class
     game_controller = GameController(game_agent, ui)
