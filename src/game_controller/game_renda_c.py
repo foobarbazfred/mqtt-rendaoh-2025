@@ -41,8 +41,8 @@ BROKER_CONFIG_AWS_IOT_CORE = {
     'use_TLS': True,
     'TLS_config' : {
         'client_key_file' : '/cert/private.der.key',
-        'client_crt_file' : '/cert/client.der.crt',
-        'root_ca_file' : '/cert/AmazonRootCA1.der.pem',
+        'client_cert_file' : '/cert/client.der.crt',
+        'root_ca_file' : '/cert/AmazonRootCA1.der',
     }
 }
 

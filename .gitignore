@@ -2,3 +2,6 @@ src/game_player/game_renda_p1.py~
 src/common/game_agent.py~
 src/game_player/game_renda_p0.py~
 *.py~
+*.sh~
+/src/game_controller
+/src/game_player

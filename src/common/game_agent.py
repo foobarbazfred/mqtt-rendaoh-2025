@@ -518,7 +518,7 @@ class GameAgent:
             
     def _MQTT_connect(self):
         
-        platform = sys.platform()
+        platform = sys.platform
         mqtt_client_id = get_uniq_id(f'{platform}_', length=8)
         broker = self.broker_config['broker_endpoint']
         port = self.broker_config['broker_port']
@@ -528,6 +528,9 @@ class GameAgent:
             self.client = MQTTClient(mqtt_client_id, broker, port)
 
         else:
+            # import for ssl constants
+            import ssl
+
             # cloud MQTT Broker (e.g. AWS IoT Core (require mTLS))
             ca_file = self.broker_config['TLS_config']['root_ca_file']
 
