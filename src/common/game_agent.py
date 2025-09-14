@@ -40,6 +40,7 @@
 
 
 
+import sys
 import json
 import time
 from topic_defs import *
@@ -517,7 +518,8 @@ class GameAgent:
             
     def _MQTT_connect(self):
         
-        mqtt_client_id = get_uniq_id('rpi_', length=8)
+        platform = sys.platform()
+        mqtt_client_id = get_uniq_id(f'{platform}_', length=8)
         broker = self.broker_config['broker_endpoint']
         port = self.broker_config['broker_port']
 
