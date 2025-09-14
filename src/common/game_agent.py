@@ -33,6 +33,9 @@
 #    Refactored algorithm: publish only on click events; 
 #       removed periodic state publishing mechanism
 #  
+# v0.18 2025/9/14
+#     Added support for dual MQTT brokers: local Mosquitto + AWS IoT Core
+#     Connection settings managed via MqttServerConfig dictionary
 #
 
 
@@ -57,9 +60,22 @@ INIT_STATE = 'STATE_OPEN'
 PERIODIC_INTERVAL = 500  # Constant defining interval (msec) for periodoc send message
 
 
+# broker_config = {
+#   'broker_endpoint' : '192.168.10.100',
+#   'broker_port' : 1883,
+#   'use_TLS': True | False,
+#   'TLS_config' : {
+#       'client_key_file' : 'private.der.key',
+#       'client_crt_file' : certificate.der.crt',
+#       'ca_file' : 'AmazonRootCA1.der',
+#   }
+# }
+
+
+
 class GameAgent:
 
-    def __init__(self, player_or_controller):
+    def __init__(self, player_or_controller, broker_config):
 
         self.current_state = None
         self.session_id = None
@@ -67,6 +83,7 @@ class GameAgent:
         self.is_player = False
         self.game_member_status = None
         self.result = None
+        self.broker_config = broker_config
  
         self.game_member_status = {}
         self.result = {}
@@ -501,7 +518,31 @@ class GameAgent:
     def _MQTT_connect(self):
         
         mqtt_client_id = get_uniq_id('rpi_', length=8)
-        self.client = MQTTClient(mqtt_client_id, MQTT_BROKER, MQTT_PORT)
+        broker = self.broker_config['broker_endpoint']
+        port = self.broker_config['broker_port']
+
+        if self.broker_config['use_TLS'] is False:
+            # local MQTT Broker (e.g. mosquitto local broker)
+            self.client = MQTTClient(mqtt_client_id, broker, port)
+
+        else:
+            # cloud MQTT Broker (e.g. AWS IoT Core (require mTLS))
+            ca_file = self.broker_config['TLS_config']['root_ca_file']
+
+            # read Server side ROOT CA (DER format)
+            with open(ca_file, "rb") as f:
+                cadata = f.read()
+
+            # parameters for mTLS
+            ssl_params = {
+                "key" : self.broker_config['TLS_config']['client_key_file'],
+                "cert" : self.broker_config['TLS_config']['client_cert_file'],
+                'cadata' : cadata,
+                "cert_reqs" : ssl.CERT_REQUIRED,
+                'server_hostname' : broker,
+            }
+            self.client = MQTTClient(mqtt_client_id, broker, port, ssl = True, ssl_params = ssl_params )
+
         self.client.set_callback(self.on_message)
         self.client.connect()
         if self.is_controller:
