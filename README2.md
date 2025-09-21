@@ -1,5 +1,6 @@
 # 🕹️ MQTT Renda-Oh 2025: The Real-Time Button-Mash King Game
---Image of: --ForTheLoveOfCode --Image of: --Category
+
+<img src="assets/images/rendaoh_kanji.png" width="500">
 
 MQTT Renda-Oh 2025 is a competitive button-mash game designed to leverage the MQTT protocol for real-time, distributed play [1, 2]. This project serves as an advanced educational showcase of IoT and embedded systems, created for the GitHub "For the Love of Code" hackathon (July 16 – September 22, 2025) [3, 4].
 ## 🌟 Project Overview: The Joy of Extreme Real-Time Messaging
