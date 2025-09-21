@@ -1,15 +1,19 @@
 #
-# ui class for controller (for M5STACK S3ATOM)
-# v0.01 2025/8/16  1st
+# Controller UI Class for Color LCD Display (for M5STACK S3ATOM)
+#
+# v0.01 2025/8/16  1st release
 #
 
 #
-# copy from following repository
-# https://github.com/russhughes/st7789py_mpy/tree/master
+# setup external libraries for LCD Display Controller
+#
+# Please retrieve the modules st7789py.py, vga1_8x8.py and tft_config.py 
+# from repository https://github.com/russhughes/st7789py_mpy/tree/master 
+# and place them in the /lib directory.
+
 import tft_config
 import st7789py as st7789
 import vga1_8x8
-
 
 LCD_WIDTH_SIZE = 128
 LCD_HEIGHT_SIZE = 128

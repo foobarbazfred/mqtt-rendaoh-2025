@@ -13,16 +13,20 @@
 #     Added support for dual MQTT brokers: local Mosquitto + AWS IoT Core
 #     Connection settings managed via MqttServerConfig dictionary
 #
+#  v0.06 (2025/9/21)
+#   Bug Fix: Fixed error caused by unset flag for M5STACK detection.
 #
 #
+
 from controller  import GameController
 from game_agent import GameAgent
 from mylib import get_uniq_id
 
 # if your controller device is M5STACK ATOMS3,
-# then set True else set False
+# then set True else set False for use color display
 # https://docs.m5stack.com/ja/core/AtomS3
 IS_M5ATOMS3 = True
+#IS_M5ATOMS3 = Flase
 
 
 # broker config for local server
@@ -45,6 +49,20 @@ BROKER_CONFIG_AWS_IOT_CORE = {
         'root_ca_file' : '/cert/AmazonRootCA1.der',
     }
 }
+
+# Convert the client certificate created in AWS IoT Core from PEM format 
+# to DER format using the openssl command.
+# command:
+#  openssl x509 -in certificate.pem -outform DER -out certificate.der
+#
+#  The following three types of certificates and the key file, 
+#  converted to DER format, are required.
+#    (1) Client Certificate
+#    (2) Client Private Key
+#    (3) Amazon ROOT CA1
+#
+
+
 
 
 def main():
