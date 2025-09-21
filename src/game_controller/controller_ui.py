@@ -2,6 +2,8 @@
 # Controller UI Class for Color LCD Display (for M5STACK S3ATOM)
 #
 # v0.01 2025/8/16  1st release
+# v0.02 2025/8/16  
+#  Feature: Implement string length limit of 16 characters
 #
 
 #
@@ -30,10 +32,14 @@ class ControllerUI:
     def lcd_clear(self, color = st7789.BLACK):
         self.lcd.fill(color)
 
-    def lcd_draw_text(self, x, y, text, fg=st7789.WHITE, bg=st7789.BLACK):
+    def lcd_draw_text(self, x, y, text, trancate_16 = True, fg=st7789.WHITE, bg=st7789.BLACK):
         font_height = 8
         self.lcd.fill_rect(x, y, LCD_WIDTH_SIZE, font_height, bg)
-        self.lcd.text(vga1_8x8, text, x, y, fg, bg)
+        if trancate_16 and len(text) > 16:
+           text_tr = text[:4] + '..' + text[-10:]   # reason of -10 ,  16(max len) - 4(prefix) - 2(..) = 10
+        else:
+           text_tr = text
+        self.lcd.text(vga1_8x8, text_tr, x, y, fg, bg)
 
     def lcd_draw_line(self, x0, y0, x1, y1, color=st7789.WHITE):
         self.lcd.line(x0, y0, x1, y1, color)
