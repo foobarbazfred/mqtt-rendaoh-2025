@@ -2,18 +2,18 @@
 
 <img src="assets/images/rendaoh_kanji.png" width="500">
 
-MQTT Renda-Oh 2025 is a competitive button-mash game designed to leverage the MQTT protocol for real-time, distributed play [1, 2]. This project serves as an advanced educational showcase of IoT and embedded systems, created for the GitHub "For the Love of Code" hackathon (July 16 – September 22, 2025) [3, 4].
+MQTT Renda-Oh 2025 is a competitive button-mash game designed to leverage the MQTT protocol for real-time, distributed play. This project serves as an advanced educational showcase of IoT and embedded systems, created for the GitHub "For the Love of Code" hackathon (July 16 – September 22, 2025) [1].
 ## 🌟 Project Overview: The Joy of Extreme Real-Time Messaging
-The primary concept of Renda-Oh (King of Mashing) is to have players compete by pressing physical buttons as many times as possible within a set period [1, 5].
+The primary concept of Renda-Oh (King of Mashing) is to have players compete by pressing physical buttons as many times as possible within a set period.
 The Hackathon Hook: Absurd Real-Time Tactility (Joyfulness & Ingenuity)
-The original prototype prioritized implementation simplicity by reporting scores in periodic batches [6, 7]. This enhanced version flips that design:
--  1 Click = 1 MQTT Message: Every single button press immediately triggers an MQTT report message publication [Conversation History]. This maximizes the feeling of tactility and the "absurdity" of flooding the network with rapid, real-time updates for maximum vibe [Conversation History].
--  The Race for Speed: The winner is the player who achieves the highest click count when the competition ends [5].
+The original prototype prioritized implementation simplicity by reporting scores in periodic batches. This enhanced version flips that design:
+-  1 Click = 1 MQTT Message: Every single button press immediately triggers an MQTT report message publication. This maximizes the feeling of tactility and the "absurdity" of flooding the network with rapid, real-time updates for maximum vibe.
+-  The Race for Speed: The winner is the player who achieves the highest click count when the competition ends.
 
 ## 🏆 Hackathon Category
 This project is submitted under:
-Category 1: Buttons, Beeps, and Blinkenlights [8, 9].
--  Fit: This category seeks hardware hacks that blink, beep, buzz, or surprise [8]. Renda-Oh is fundamentally an interactive, physical, and tactile system utilizing buttons, Piezo speakers, and color LEDs to manage the competitive experience [10].
+Category 1: Buttons, Beeps, and Blinkenlights.
+-  Fit: This category seeks hardware hacks that blink, beep, buzz, or surprise. Renda-Oh is fundamentally an interactive, physical, and tactile system utilizing buttons, Piezo speakers, and color LEDs to manage the competitive experience.
 
 ## ⚙️ Key Technical Enhancements (Execution & Difficulty)
 The high-frequency messaging goal required solving critical constraints found in the original prototype [11]:
@@ -73,3 +73,5 @@ Software & Service Requirements:
 --------------------------------------------------------------------------------
 For detailed setup instructions, circuit diagrams, and PIO source code, please refer to the src directory or the project Wiki.
 We encourage feedback, collaboration, and chaos! Questions and suggestions are welcome via Issues or Pull Requests! [27]
+
+[1] https://github.blog/open-source/for-the-love-of-code-2025/
