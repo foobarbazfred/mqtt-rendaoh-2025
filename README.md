@@ -1,3 +1,5 @@
+<img src="assets/images/rendaoh_arch.png" width="800">
+
 # MQTT Renda-Oh 2025: The Real-Time Button-Mash King Game
 
 **MQTT Renda-Oh 2025** is a real-time button mash battle game designed to help you learn IoT and embedded systems in a fun and interactive way.  
