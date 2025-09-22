@@ -1,8 +1,8 @@
 ### pop in tech commentary
 
-Avatar (excited tone): 
-<img src="character_robo0_20250922.png" width=200>
+<img src="character_robo0_20250922.png" width=200><br>
 
+Avatar (excited tone): 
 
 “Hey! Quick tech break! 
 
