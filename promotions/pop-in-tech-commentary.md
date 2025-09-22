@@ -4,7 +4,6 @@
 
 Avatar (excited tone): 
 
-Avatar (excited tone):
 “Hey! Quick tech break! 
 
 See those scores updating instantly? 
