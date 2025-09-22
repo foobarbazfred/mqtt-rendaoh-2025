@@ -77,7 +77,8 @@ Software & Service Requirements:
 - Color Display Driver (for M5STACK AtomS3)
   - Please retrieve the modules st7789py.py, vga1_8x8.py and tft_config.py from repository https://github.com/russhughes/st7789py_mpy/tree/master 
 
-⚠️ Note on Dependencies: For stable operation in the high-frequency mode, relying on a public broker with strict quotas is discouraged. Please note any paid services used (AWS IoT Core is best) in your submission.
+⚠️ ### Paid service in use: 
+Free public MQTT brokers cannot reliably support the high-frequency message delivery required for this project. An MQTT broker without quota restrictions and with low latency is necessary. For this demonstration, AWS IoT Core has been adopted.
 
 --------------------------------------------------------------------------------
 We encourage feedback, Questions and suggestions are welcome via Issues or Pull Requests!
