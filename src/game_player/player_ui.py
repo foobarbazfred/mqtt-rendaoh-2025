@@ -32,6 +32,11 @@ def np_light_neo(np, ptn):
     np.write()
 
 CLICK_LIMIT = 100
+# function: display game progress with NeoPixel
+# args:  np ... object  of NeoPixel
+#        p0 ... counts of player 0
+#        p1 ... counts of player 1
+#
 def np_light_progress(np, p0, p1):
     print('light progress:', p0, p1)
     np_clear(np)
@@ -39,7 +44,7 @@ def np_light_progress(np, p0, p1):
        space = CLICK_LIMIT - p0 - p1
     else:
        space = 0
-    length = len(np)
+    length = len(np)   # length: nuber of pixels of NeoPixel
 
     p0_n = int(length / (p0 + p1 + space) * p0)
     sp_n = int(length / (p0 + p1 + space) * space)

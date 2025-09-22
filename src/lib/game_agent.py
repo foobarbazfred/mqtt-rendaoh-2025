@@ -37,6 +37,10 @@
 #     Added support for dual MQTT brokers: local Mosquitto + AWS IoT Core
 #     Connection settings managed via MqttServerConfig dictionary
 #
+# v0.19 2025/9/22
+#    Correct CERT file key name in configuration example comment
+#
+#
 
 
 
@@ -67,8 +71,8 @@ PERIODIC_INTERVAL = 500  # Constant defining interval (msec) for periodoc send m
 #   'use_TLS': True | False,
 #   'TLS_config' : {
 #       'client_key_file' : 'private.der.key',
-#       'client_crt_file' : certificate.der.crt',
-#       'ca_file' : 'AmazonRootCA1.der',
+#       'client_crt_file' : 'client.der.crt',
+#       'root_ca_file' : 'AmazonRootCA1.der',
 #   }
 # }
 

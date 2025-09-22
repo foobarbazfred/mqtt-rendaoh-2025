@@ -8,6 +8,9 @@
 #  v0.03 (2025/9/14)
 #     Added support for dual MQTT brokers: local Mosquitto + AWS IoT Core
 #     Connection settings managed via MqttServerConfig dictionary
+#  v0.05 2025/9/22
+#    Correct CERT file key name in configuration
+
 
 
 from player import GamePlayer
@@ -35,8 +38,8 @@ BROKER_CONFIG_AWS_IOT_CORE = {
     'use_TLS': True,
     'TLS_config' : {
         'client_key_file' : '/cert/private.der.key',
-        'client_crt_file' : '/cert/client.der.crt',
-        'root_ca_file' : '/cert/AmazonRootCA1.der.pem',
+        'client_cert_file' : '/cert/client.der.crt',
+        'root_ca_file' : '/cert/AmazonRootCA1.der',
     }
 }
 

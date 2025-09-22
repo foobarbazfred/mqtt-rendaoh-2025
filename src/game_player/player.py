@@ -32,7 +32,9 @@
 # v0.18  2025/8/16
 #    Refactored algorithm: publish only on click events; 
 #      removed periodic state publishing mechanism
-
+# v0.19  2025/9/22
+#    refactor; change file name,  ui.py -> player_ui.py
+#
 
 #    
 #
@@ -40,7 +42,7 @@
 import time
 import random
 from mylib import timestamp
-import ui
+import player_ui as ui
 import pio_switch_counter
 
 from machine import PWM
