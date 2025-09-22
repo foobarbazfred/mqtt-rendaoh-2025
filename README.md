@@ -1,18 +1,16 @@
 <img src="assets/images/rendaoh_arch.png" width="800">
 
-# MQTT Renda-Oh 2025: The Real-Time Button-Mash King Game
-
-**MQTT Renda-Oh 2025** is a real-time button mash battle game designed to help you learn IoT and embedded systems in a fun and interactive way.  
-This project was created for GitHub's "For the Love of Code 2025" hackathon and is an advanced, educational revamp of the original MQTT-based button-mash game.
+# 🕹️ MQTT Renda-Oh 2025: The Real-Time Button-Mash King Game
 
 <img src="assets/images/rendaoh_kanji.png" width="500">
 
-
-## Project Overview
-
-Players compete by pressing physical buttons connected to an Raspberry Pi Pico 2 W running MicroPython.  
-Each button press sends a score update via MQTT, and game state—including scores and victory effects—is displayed on a Color LED (NeoPixel).  
-The project is specifically designed to teach beginners about **hardware/software integration, button click counting by PIO, and MQTT messaging** through hands-on gameplay.
+MQTT Renda-Oh 2025 is a competitive button-mash game designed to leverage the MQTT protocol for real-time, distributed play. This project serves as an advanced educational showcase of IoT and embedded systems, created for the GitHub "For the Love of Code" hackathon (July 16 – September 22, 2025) [1].
+## 🌟 Project Overview: The Joy of Extreme Real-Time Messaging
+The primary concept of Renda-Oh (King of Mashing) is to have players compete by pressing physical buttons as many times as possible within a set period.
+The Hackathon Hook: Absurd Real-Time Tactility (Joyfulness & Ingenuity)
+The original prototype prioritized implementation simplicity by reporting scores in periodic batches. This enhanced version flips that design:
+-  1 Click = 1 MQTT Message: Every single button press immediately triggers an MQTT report message publication. This maximizes the feeling of tactility and the "absurdity" of flooding the network with rapid, real-time updates for maximum vibe.
+-  The Race for Speed: The winner is the player who achieves the highest click count when the competition ends.
 
 Game Cntroller<br>
 <img src="assets/images/GameController_20250922.png" width="300"><br>
@@ -26,64 +24,65 @@ Game Player(1)<br>
 Click battle<br>
 <img src="assets/images/click_battle_20250922.png" width="300"><br>
 
+## 🏆 Hackathon Category
+This project is submitted under:
+Category 1: Buttons, Beeps, and Blinkenlights.
+-  Fit: This category seeks hardware hacks that blink, beep, buzz, or surprise. Renda-Oh is fundamentally an interactive, physical, and tactile system utilizing buttons, Piezo speakers, and color LEDs to manage the competitive experience.
 
-## Technical Architecture
+## ⚙️ Key Technical Enhancements (Execution & Difficulty)
+The high-frequency messaging goal required solving critical constraints found in the original prototype:
+- PIO for Optimized Input (Technical Difficulty): To ensure accurate counting and prevent CPU core resource consumption due to software debouncing, the PIO (Programmable Input/Output) feature of the Raspberry Pi Pico 2 W is utilized to count button presses independently of the main microcontroller process.
+- High-Performance MQTT Broker Requirement (Execution): The high volume of "1 click = 1 message" reports necessitates a robust broker. The original public broker failed due to quota limitations (0x97: Quota Exceeded). Therefore, this version requires a high-performance broker like AWS IoT Core to handle the high message rate and maintain low latency.
+- Robust State Synchronization: Critical game state transition messages (change-state) use MQTT QoS: 1 to guarantee delivery. The system implements a retransmission mechanism specifically to handle 0x97: Quota Exceeded responses from the broker, ensuring crucial messages are not lost and the game proceeds synchronously.
 
-- **Raspberry Pi Pico 2 W (RP2350):**  for GamePalyer  
-  A high cost-performance microcontroller with Wi-Fi/Bluetooth, also has PIO interface
-- **AtomS3 (ESP32-S3):**  for GameController  
-  A high-performance microcontroller with Wi-Fi/Bluetooth, ideal for MicroPython scripting
-- **MicroPython:**  
-  A lightweight Python implementation optimized for embedded devices, enabling easy scripting directly on microcontrollers.
-- **GC9107 LCD (SPI):**  
-  A color display connected via SPI bus, used to present scores, game progress, and victory animations.
-- **MQTT (Pub/Sub Model):**  
-  An efficient, lightweight messaging protocol for IoT. Each device publishes its score updates; the broker aggregates and distributes game state in real time.
-- **PIO (Programmable IO):**  
-  Used for optimizing XXX operations and boosting overall performance for unti chattering and click count.
-- **MQTT Broker:**  
-  For optimal performance, this system requires an MQTT broker with minimal latency and permissive quota policies.
-  As a result, deploying an MQTT broker on the local network or using AWS IoT Core’s MQTT broker is required
+## 🖼️ Project Visuals (Appearance and Gameplay)
+The system consists of the GameController and multiple GamePlayers.
+- GamePlayer Setup: GamePlayers are built using MicroPython-enabled boards (e.g., Raspberry Pi Pico 2 W/Pico W) connected to a physical switch, a Color LED (NeoPixel), and a Piezo Speaker.
+- Game Flow Feedback:
+    - Countdown: Game start and stop are signaled by synchronized flashing LED patterns and Piezo speaker melodies.
+    - Live Score Indicator: During the match, the Color LED functions as an indicator, visualizing the click count of the player and the opponent. The length of the indicator represents the lead, showing which player is currently ahead.
+    - Victory: After aggregation, synchronized sound and victory displays indicate the winner.
+- Distributed Play: Though the demo units may be adjacent, all score updates and state changes are routed via the MQTT broker, enabling competition between players in remote locations.
 
-## Game Flow
+## 🧩 Software Architecture
+The software structure centralizes complex networking and state logic into a common class.
+1. Core Modules
+The software is structured around three key classes:
+- Controller Class: Handles game progression instructions, score aggregation, and victory determination.
+- Player Class: Manages user output via the Color LED and Piezo speaker, and displays the opponent's score periodically.
+- GameAgent Class: The core management layer, consolidating MQTT message sending/receiving and the game state machine logic.
+2. Game State and Synchronization
+- State Machine Implementation: The game flow is divided into 12 distinct states (e.g., countdowns, reporting, result display).
+- Synchronous Transitions: All GamePlayers transition states simultaneously, triggered by synchronous instructions (change-state messages) issued by the GameController. This state transition logic is implemented declaratively using a common state transition table (dictionary format) within the shared GameAgent class.
+3. Communication Protocol (MQTT Topics)
 
-1. Players mash physical buttons connected to AtomS3.
-2. Each press triggers MicroPython code to send an MQTT message with the current score.
-3. The MQTT broker collects and distributes score updates from all devices.
-4. The GC9107 LCD displays live scores and game status.
-5. Victory triggers synchronized sound and LED effects using AtomS3's onboard features.
+## 📚 Educational Highlights
+This project provides practical, hands-on experience:
+- Implementing robust communication and state synchronization using the MQTT protocol.
+- Advanced embedded techniques like using PIO for reliable, low-latency input counting.
+- Embedded development using MicroPython on modern microcontrollers.
+- Integrating physical I/O: switches, SPI-connected LCDs, LEDs, and sound effects.
 
-## Target Audience & Use Cases
+## 💻 Setup and Dependencies
 
-- Beginners and intermediate learners in IoT or embedded systems
-- Educators and workshop facilitators
-- Hackathon participants and demo presenters
-- Button-mash game enthusiasts and tech explorers
+Hardware Requirements:
+- GamePlayer (MicroPython): Raspberry Pi Pico 2 W (RP2350) or Pico W (RP2040).
+- GameController (MicroPython): M5STACK AtomS3 (ESP32-S3) .
+- I/O Components: Pushbutton switch, Color LED (NeoPixel Ring), Piezo Speaker.
 
-## Hackathon Category
+Software & Service Requirements:
+- Embedded OS: MicroPython(for gameController , gamePlayer).
+- MQTT Client: umqtt.simple (MQTT V3) for GamePlayer and GameController.
+- MQTT Broker: AWS IoT Core or equivalent high-performance, low-latency broker with permissive quota policies is required for the "1 click = 1 message" mode.
+- Color Display Driver (for M5STACK AtomS3)
 
-- Category 1: Buttons, beeps, and blinkenlights
+⚠️ Note on Dependencies: For stable operation in the high-frequency mode, relying on a public broker with strict quotas is discouraged. Please note any paid services used (AWS IoT Core) in your submission.
 
-## Key Technical Enhancements
+--------------------------------------------------------------------------------
+We encourage feedback, Questions and suggestions are welcome via Issues or Pull Requests!
 
-- **Interactive MQTT Messaging:**  
-  Immediate MQTT message publication in response to button presses, ensuring seamless user-system feedback.
-- **Enhanced Victory Effects:**  
-  Synchronized sound and dynamic LED color effects celebrate wins, increasing immersion and excitement.
-- **Full MicroPython Support:**  
-  Refactored for complete MicroPython compatibility, removing dependency on standard Python 3 and expanding hardware flexibility.
-- **LCD Display Integration:**  
-  The built-in AtomS3 LCD now shows real-time game state and scores, improving player engagement and visibility.
+The hackathon’s MQTT Battle Game is built on the version I originally developed for Interface magazine. 
+https://github.com/foobarbazfred/mqtt-based-game
+Although using existing code from other sources would have been fine, I decided to recreate it specifically for this entry.
 
-## Educational Highlights
-
-- Hands-on learning of MQTT-based device communication and synchronization
-- Practical experience with SPI hardware control
-- Embedded development using MicroPython
-- Integration of physical input, visual output, and sound effects
-
----
-
-For setup instructions, sample code, or circuit diagrams, please refer to the `src` directory or project Wiki.  
-This project is ideal for education, workshops, IoT demos, or as a technical showcase at events.  
-Questions and suggestions are welcome via Issues or Pull Requests!
+[1] https://github.blog/open-source/for-the-love-of-code-2025/
