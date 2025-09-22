@@ -21,6 +21,9 @@ Game Player(0)<br>
 Game Player(1)<br>
 <img src="assets/images/GamePlayer1_20250922.png" width="300"><br>
 
+Click battle<br>
+<img src="assets/images/click_battle_20250922.png" width="300"><br>
+
 
 
 
