@@ -4,14 +4,12 @@
 
 Avatar (excited tone): 
 
+Avatar (excited tone):
 “Hey! Quick tech break! 
 
 See those scores updating instantly? 
 
-That’s MQTT — 
-
-sending your taps straight to the controller in real time! The controller collects everyone’s clicks, 
-updates the scores, and then shares them with all players! 
+That’s MQTT — sending a message from your tap straight to the controller in real time! The controller gathers everyone’s clicks, 
+updates the scores, and then sends the results back to all players! 
 
 Alright, back to the action!”
-
