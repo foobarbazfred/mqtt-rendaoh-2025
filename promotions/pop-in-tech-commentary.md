@@ -4,13 +4,14 @@ Avatar (excited tone):
 <img src="character_robo0_20250922.png" width=200>
 
 
-“Hey! Quick tech break! See those scores updating instantly? 
+“Hey! Quick tech break! 
 
-That’s MQTT — sending your taps to the controller in real time!”
+See those scores updating instantly? 
 
-And here’s the cool part: every time you click, an MQTT message is sent straight to the controller!
+That’s MQTT — 
 
-(waves hands, packets fly across the screen) 
+sending your taps straight to the controller in real time! The controller collects everyone’s clicks, 
+updates the scores, and then shares them with all players! 
 
-“Alright, back to the action!”
+Alright, back to the action!”
 
