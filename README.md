@@ -12,8 +12,12 @@ Players compete by pressing physical buttons connected to an Raspberry Pi Pico 2
 Each button press sends a score update via MQTT, and game state—including scores and victory effects—is displayed on a Color LED (NeoPixel).  
 The project is specifically designed to teach beginners about **hardware/software integration, button click counting by PIO, and MQTT messaging** through hands-on gameplay.
 
-Game Player<br>
+Game Cntroller<br>
 <img src="assets/images/GameController_20250922.png" width="300"><br>
+
+Game Player(0)<br>
+<img src="assets/images/GamePlayer0_20250922.png" width="300"><br>
+
 
 
 
