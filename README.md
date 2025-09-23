@@ -107,8 +107,9 @@ Free public MQTT brokers cannot reliably support the high-frequency message deli
 --------------------------------------------------------------------------------
 We encourage feedback, Questions and suggestions are welcome via Issues or Pull Requests!
 
-The hackathon’s MQTT Battle Game is built on the version I originally developed for Interface magazine. 
+The hackathon’s MQTT Battle Game is built on the version I originally developed for the *Interface magazine* [2]. 
 https://github.com/foobarbazfred/mqtt-based-game
 Although using existing code from other sources would have been fine, I decided to recreate it specifically for this entry.
 
-[1] https://github.blog/open-source/for-the-love-of-code-2025/
+[1] https://github.blog/open-source/for-the-love-of-code-2025/<br>
+[2] “MQTT-based Competitive Game System,” *Interface*, CQ Publishing, Japan, vol. 51, no. 10, p. 69, Oct. 2025.
