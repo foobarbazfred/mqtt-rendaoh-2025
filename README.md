@@ -66,6 +66,8 @@ The software is structured around three key classes:
 - State Machine Implementation: The game flow is divided into 12 distinct states (e.g., countdowns, reporting, result display).
 - Synchronous Transitions: All GamePlayers transition states simultaneously, triggered by synchronous instructions (change-state messages) issued by the GameController. This state transition logic is implemented declaratively using a common state transition table (dictionary format) within the shared GameAgent class.
 3. Communication Protocol (MQTT Topics)
+  1. To connect to AWS IoT Core via MQTT, a client certificate is required.  Please access the AWS IoT Core service through the AWS Console and generate a client certificate.
+  2. MicroPython's TLS implementation expects certificate files in DER format, not PEM.  Use the `openssl` command to convert your certificates from PEM to DER format, and upload them to the microcontroller's flash memory.
 
 ## Circuit Diagram
 Below is the circuit diagram for the game player. The components used are:
