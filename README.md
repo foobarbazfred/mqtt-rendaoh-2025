@@ -61,6 +61,15 @@ The software is structured around three key classes:
 - Synchronous Transitions: All GamePlayers transition states simultaneously, triggered by synchronous instructions (change-state messages) issued by the GameController. This state transition logic is implemented declaratively using a common state transition table (dictionary format) within the shared GameAgent class.
 3. Communication Protocol (MQTT Topics)
 
+## Circuit Diagram
+Below is the circuit diagram for the controller. The components used are:
+1. Raspberry Pi Pico 2 W  
+2. Push Switch
+3. Piezoelectric Speaker
+4. NeoPixel Full Color LED (N=24 or N=12)
+
+<img src="assets/images/Schematics_MQTT_battle_game.png" width="700">
+
 ## 📚 Educational Highlights
 This project provides practical, hands-on experience:
 - Implementing robust communication and state synchronization using the MQTT protocol.
