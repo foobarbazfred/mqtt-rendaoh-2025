@@ -95,9 +95,10 @@ Hardware Requirements:
 Software & Service Requirements:
 - Embedded OS: MicroPython(for gameController , gamePlayer).
 - MQTT Client: umqtt.simple (MQTT V3) for GamePlayer and GameController.
-- MQTT Broker: AWS IoT Core or equivalent high-performance, low-latency broker with permissive quota policies is required for the "1 click = 1 message" mode.
+   - https://github.com/micropython/micropython-lib/tree/master/micropython/umqtt.simple    
 - Color Display Driver (for M5STACK AtomS3)
-  - Please retrieve the modules st7789py.py, vga1_8x8.py and tft_config.py from repository https://github.com/russhughes/st7789py_mpy/tree/master 
+  - Please retrieve the modules st7789py.py, vga1_8x8.py and tft_config.py from repository https://github.com/russhughes/st7789py_mpy/tree/master
+- MQTT Broker: AWS IoT Core or equivalent high-performance, low-latency broker with permissive quota policies is required for the "1 click = 1 message" mode.
 
 ## ⚠️ Paid service in use
 
