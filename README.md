@@ -35,10 +35,18 @@ Category 1: Buttons, Beeps, and Blinkenlights.
 -  Fit: This category seeks hardware hacks that blink, beep, buzz, or surprise. Renda-Oh is fundamentally an interactive, physical, and tactile system utilizing buttons, Piezo speakers, and color LEDs to manage the competitive experience.
 
 ## ⚙️ Key Technical Enhancements (Execution & Difficulty)
-The high-frequency messaging goal required solving critical constraints found in the original prototype:
-- PIO for Optimized Input (Technical Difficulty): To ensure accurate counting and prevent CPU core resource consumption due to software debouncing, the PIO (Programmable Input/Output) feature of the Raspberry Pi Pico 2 W is utilized to count button presses independently of the main microcontroller process.
-- High-Performance MQTT Broker Requirement (Execution): The high volume of "1 click = 1 message" reports necessitates a robust broker. The original public broker failed due to quota limitations (0x97: Quota Exceeded). Therefore, this version requires a high-performance broker like AWS IoT Core to handle the high message rate and maintain low latency.
-- Robust State Synchronization: Critical game state transition messages (change-state) use MQTT QoS: 1 to guarantee delivery. The system implements a retransmission mechanism specifically to handle 0x97: Quota Exceeded responses from the broker, ensuring crucial messages are not lost and the game proceeds synchronously.
+The original version relied on a free, open MQTT broker, which introduced two critical limitations:
+1. **Unreliable message delivery at high frequency**  
+   Due to strict quota limits, publishing one message per click often led to message loss when traffic increased.
+2. **MQTT v5 dependency for Game Controller**  
+   To detect and recover from quota-exceeded errors, the original implementation required MQTT v5 features, which are not supported in MicroPython environments—making it incompatible with microcontroller-based Game Controllers.
+
+To ensure tactile responsiveness, realism, and educational clarity, we redesigned the system to guarantee one message per click. As a result, we migrated to **AWS IoT Core**, a paid MQTT broker with significantly higher quota thresholds.
+
+This change enabled the following improvements:
+- ✅ **Stable one-click-one-message publishing** thanks to increased quota capacity  
+- ✅ **Elimination of quota error handling logic**, allowing us to drop MQTT v5 and rely solely on MQTT v3  
+- ✅ **Unified architecture**: both GamePlayer and GameController now run on Microcontrollers using MicroPython and `umqtt.simple`, simplifying deployment and enhancing maintainability
 
 ## 🖼️ Project Visuals (Appearance and Gameplay)
 The system consists of the GameController and multiple GamePlayers.
