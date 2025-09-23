@@ -17,7 +17,7 @@ The original prototype prioritized implementation simplicity by reporting scores
 -  1 Click = 1 MQTT Message: Every single button press immediately triggers an MQTT report message publication. This maximizes the feeling of tactility and the "absurdity" of flooding the network with rapid, real-time updates for maximum vibe.
 -  The Race for Speed: The winner is the player who achieves the highest click count when the competition ends.
 
-Game Cntroller<br>
+Game Controller<br>
 <img src="assets/images/GameController_20250922.png" width="300"><br>
 
 Game Player(0)<br>
