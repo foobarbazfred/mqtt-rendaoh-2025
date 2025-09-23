@@ -62,7 +62,7 @@ The software is structured around three key classes:
 3. Communication Protocol (MQTT Topics)
 
 ## Circuit Diagram
-Below is the circuit diagram for the controller. The components used are:
+Below is the circuit diagram for the game player. The components used are:
 1. Raspberry Pi Pico 2 W  
 2. Push Switch
 3. Piezoelectric Speaker
