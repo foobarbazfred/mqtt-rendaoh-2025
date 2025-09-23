@@ -30,7 +30,7 @@ BROKER_CONFIG_LOCAL = {
 
 # broker config for cloud mqtt server (AWS IoT Core)
 BROKER_CONFIG_AWS_IOT_CORE = {
-    'broker_endpoint' : 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com',
+    'broker_endpoint' : 'a3xxxxx7t-ats.iot.ap-northeast-1.amazonaws.com',
     'broker_port' : 8883,
     'use_TLS': True,
     'TLS_config' : {
