@@ -71,7 +71,7 @@ The software is structured around three key classes:
 
 ## Circuit Diagram
 Below is the circuit diagram for the game player. The components used are:
-1. Raspberry Pi Pico 2 W  
+1. Raspberry Pi Pico 2 W  (or Pico W)
 2. Push Switch
 3. Piezoelectric Speaker
 4. NeoPixel Full Color LED (N=24 or N=12)
