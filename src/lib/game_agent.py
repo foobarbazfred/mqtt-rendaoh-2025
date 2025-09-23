@@ -38,7 +38,7 @@
 #     Connection settings managed via MqttServerConfig dictionary
 #
 # v0.19 2025/9/22
-#    Correct CERT file key name in configuration example comment
+#    Corrected the CERT file key name in the configuration example comment
 #
 #
 
