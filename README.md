@@ -20,7 +20,7 @@ The original prototype prioritized implementation simplicity by reporting scores
 Game Controller (M5Stack ATOM-S3)<br>
 <img src="assets/images/GameController_20250922.png" width="300"><br>
 
-Game Player(0) (Raspberry Pi Pico 2 W)<br>
+Game Player(0) (Raspberry Pi Pico W)<br>
 <img src="assets/images/GamePlayer0_20250922.png" width="300"><br>
 
 Game Player(1) (Raspberry Pi Pico 2 W)<br>
