@@ -14,12 +14,12 @@ import paho.mqtt.client as mqtt
 from paho.mqtt.properties import Properties
 from paho.mqtt.packettypes import PacketTypes
 
-ENDPOINT = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+ENDPOINT = 'a3xxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 PORT = 8883
 
 CA_FILE = './crt/AmazonRootCA1.pem'
-CERT_FILE = './crt/16e78b692c53471832783b9a1999c55f21368cda2696c883763db081189abd45-certificate.pem.crt'
-KEY_FILE = './crt/16e78b692c53471832783b9a1999c55f21368cda2696c883763db081189abd45-private.pem.key'
+CERT_FILE = './crt/16e78b69xxxxxxxxxxd45-certificate.pem.crt'
+KEY_FILE = './crt/16e78b692xxxxxxxxxxxabd45-private.pem.key'
 
 TOPIC = "sensor/device01"
 

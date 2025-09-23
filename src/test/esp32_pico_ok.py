@@ -3,7 +3,7 @@ import ssl
 import json
 
 from umqtt.simple import MQTTClient
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3bxxxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 PORT=8883
 
 MQTT_TOPIC = b'test/upy_publish_test'

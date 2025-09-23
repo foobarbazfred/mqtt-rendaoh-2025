@@ -10,7 +10,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -57,7 +57,7 @@ client.disconnect()
 from umqtt.simple import MQTTClient
 
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 aws_endpoint = MQTT_BROKER
 PORT=8883
 
@@ -100,7 +100,7 @@ server_cert = "cert/server.crt"
 
 from umqtt.simple import MQTTClient
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 PORT=8883
 
 with open(private_key, 'r') as f:
@@ -147,7 +147,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -194,7 +194,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -247,7 +247,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -310,7 +310,7 @@ with open(ROOT_CA_FILE, 'rb') as f:
     root_ca = f.read()
 
 client_id = "maqueen01"
-endpoint = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+endpoint = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 
 context = tls.SSLContext(tls.PROTOCOL_TLS_CLIENT)
 context.load_cert_chain(cert, key)
@@ -337,7 +337,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -385,7 +385,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -428,7 +428,7 @@ from umqtt.simple import MQTTClient
 import ssl
 import json
 
-MQTT_BROKER = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+MQTT_BROKER = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 MQTT_PORT = 8883             # 8883 : MQTT, encrypted
 
 MQTT_TOPIC = b'test/upy_publish_test'
@@ -481,7 +481,7 @@ with open(ROOT_CA_FILE, 'rb') as f:
     root_ca = f.read()
 
 client_id = "esp32-pico01"
-endpoint = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+endpoint = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 
 context = tls.SSLContext(tls.PROTOCOL_TLS_CLIENT)
 context.load_cert_chain(cert, key)
@@ -501,7 +501,7 @@ import tls
 import json
 from umqtt.simple import MQTTClient
 
-endpoint = 'a3bwzjwa2nkf7t-ats.iot.ap-northeast-1.amazonaws.com'
+endpoint = 'a3xxxxxxxx7t-ats.iot.ap-northeast-1.amazonaws.com'
 client_id = "esp32-pico01"
 
 KEY_FILE = '/cert/private.key'
