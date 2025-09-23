@@ -32,7 +32,7 @@ Click battle<br>
 ## 🏆 Hackathon Category
 This project is submitted under:
 Category 1: Buttons, Beeps, and Blinkenlights.
--  Fit: This category seeks hardware hacks that blink, beep, buzz, or surprise. Renda-Oh is fundamentally an interactive, physical, and tactile system utilizing buttons, Piezo speakers, and color LEDs to manage the competitive experience.
+-  Fit: Renda-Oh fits this category by delivering a hands-on, sensory-rich experience through rapid button input, audible feedback via Piezo speakers, and dynamic LED responses. The system emphasizes physical interaction and real-time competition, aligning with the spirit of hardware hacks that engage and surprise.
 
 ## ⚙️ Key Technical Enhancements (Execution & Difficulty)
 The original version relied on a free, open MQTT broker, which introduced two critical limitations:
