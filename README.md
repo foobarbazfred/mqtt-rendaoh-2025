@@ -112,4 +112,4 @@ https://github.com/foobarbazfred/mqtt-based-game
 Although using existing code from other sources would have been fine, I decided to recreate it specifically for this entry.
 
 [1] https://github.blog/open-source/for-the-love-of-code-2025/<br>
-[2] “MQTT-based Competitive Game System,” *Interface*, CQ Publishing, Japan, vol. 51, no. 10, p. 69, Oct. 2025.
+[2] “MQTT-based Competitive Game System,” *Interface magazine*, CQ Publishing, Japan, vol. 51, no. 10, p. 69, Oct. 2025.
