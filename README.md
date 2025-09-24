@@ -1,5 +1,3 @@
-![The Real-time Button-Mash King Game](assets/images/rendaoh_arch.png)
-
 # 🕹️ MQTT Renda-Oh 2025: The Real-Time Button-Mash King Game
 
 <img src="assets/images/rendaoh_kanji.png" width="500">
