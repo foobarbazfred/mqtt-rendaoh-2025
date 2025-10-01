@@ -81,7 +81,7 @@ Below is the circuit diagram for the game player. The components used are:
 ## 📚 Educational Highlights
 This project provides practical, hands-on experience:
 - Implementing robust communication and state synchronization using the MQTT protocol.
-- Advanced embedded techniques like using PIO for reliable, low-latency input counting.
+- Advanced embedded techniques like using PIO (Programmable I/O）for reliable, low-latency input counting.
 - Embedded development using MicroPython on modern microcontrollers.
 - Integrating physical I/O: switches, SPI-connected LCDs, LEDs, and sound effects.
 
